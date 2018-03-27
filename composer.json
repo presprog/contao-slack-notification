@@ -1,0 +1,30 @@
+{
+    "name": "presprog/contao-slack-notification",
+    "type": "contao-bundle",
+    "description": "Adds a Slack gateway to the Contao notification center",
+    "license": "LGPL-3.0+",
+    "authors": [
+        {
+            "name": "Benedict Zinke",
+            "email": "bz@presentprogressive.de"
+        }
+    ],
+    "require": {
+      "contao/core-bundle": "^4.4",
+      "terminal42/notification_center": "^1.4"
+    },
+    "require-dev": {
+        "contao/manager-plugin": "^2.0"
+    },
+    "conflict": {
+        "contao/manager-plugin": "<2.0 || >=3.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "PresProg\\SlackNotification\\": "src/"
+        }
+    },
+    "extra": {
+        "contao-manager-plugin": "PresProg\\SlackNotification\\ContaoManager\\Plugin"
+    }
+}
