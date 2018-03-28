@@ -21,7 +21,8 @@ class Plugin implements BundlePluginInterface
         return [
             BundleConfig::create(SlackNotificationBundle::class)
                 ->setLoadAfter([
-                    ContaoCoreBundle::class
+                    ContaoCoreBundle::class,
+                    'notification_center'
                 ])
         ];
     }
