@@ -6,7 +6,7 @@ $GLOBALS['TL_DCA']['tl_nc_gateway']['fields']['slack_webhook'] = [
     'label'     => &$GLOBALS['TL_LANG']['tl_nc_gateway']['slack_webhook'],
     'inputType' => 'text',
     'eval'      => [
-        'required'  => true,
+        'mandatory'  => true,
         'maxLength' => 255,
         'rgxp'      => 'url',
         'tl_class'  => 'w50'
@@ -18,7 +18,7 @@ $GLOBALS['TL_DCA']['tl_nc_gateway']['fields']['slack_channel'] = [
     'label'     => &$GLOBALS['TL_LANG']['tl_nc_gateway']['slack_channel'],
     'inputType' => 'text',
     'eval'      => [
-        'required'  => true,
+        'mandatory'  => true,
         'maxLength' => 255,
         'tl_class'  => 'w50'
     ],
