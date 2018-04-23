@@ -3,31 +3,49 @@
 namespace PresProg\SlackNotification\MessageDraft;
 
 use NotificationCenter\MessageDraft\MessageDraftInterface;
+use NotificationCenter\Model\Language;
+use NotificationCenter\Model\Message;
 
 class SlackMessageDraft implements MessageDraftInterface
 {
     /**
-     * @inheritDoc
+     * Construct the object
+     * @param Message $objMessage
+     * @param Language $objLanguage
+     * @param          $arrTokens
+     */
+    public function __construct(
+        Message $objMessage,
+        Language $objLanguage,
+        $arrTokens
+    ) {
+        $this->objMessage = $objMessage;
+        $this->objLanguage = $objLanguage;
+        $this->arrTokens = $arrTokens;
+    }
+
+    /**
+     * {@inheritdoc}
      */
     public function getTokens()
     {
-        // TODO: Implement getTokens() method.
+        return $this->arrTokens;
     }
 
     /**
-     * @inheritDoc
+     * {@inheritdoc}
      */
     public function getMessage()
     {
-        // TODO: Implement getMessage() method.
+        return $this->objMessage;
     }
 
     /**
-     * @inheritDoc
+     * {@inheritdoc}
      */
     public function getLanguage()
     {
-        // TODO: Implement getLanguage() method.
+        return $this->objLanguage->language;
     }
 
 }
