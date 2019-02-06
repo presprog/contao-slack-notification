@@ -8,6 +8,7 @@ $GLOBALS['TL_DCA']['tl_nc_language']['fields']['slack_text'] = [
     'inputType' => 'textarea',
     'eval'      => [
         'rgxp'           => 'nc_tokens',
+        'allowHtml'      => false,
         'decodeEntities' => true,
         'mandatory'      => true
     ],

@@ -2,6 +2,7 @@
 
 namespace PresProg\SlackNotification\Gateway;
 
+use GuzzleHttp\Client;
 use NotificationCenter\Gateway\Base;
 use NotificationCenter\Gateway\GatewayInterface;
 use NotificationCenter\MessageDraft\MessageDraftFactoryInterface;
@@ -10,6 +11,11 @@ use NotificationCenter\Model\Language;
 use NotificationCenter\Model\Message;
 use PresProg\SlackNotification\MessageDraft\SlackMessageDraft;
 
+/**
+ * Class Slack
+ * @package PresProg\SlackNotification\Gateway
+ * @inheritdoc
+ */
 class Slack extends Base implements GatewayInterface, MessageDraftFactoryInterface
 {
     /**
@@ -34,12 +40,42 @@ class Slack extends Base implements GatewayInterface, MessageDraftFactoryInterfa
         }
 
         try {
-//            return $objEmail->sendTo($objDraft->getRecipientEmails());
+            return $this->sendDraft($objDraft);
         } catch (\Exception $e) {
             \System::log(sprintf('Could not send slack notification for message ID %s: %s', $objMessage->id, $e->getMessage()), __METHOD__, TL_ERROR);
         }
 
         return false;
+    }
+
+    /**
+     * @param SlackMessageDraft $objDraft
+     */
+    public function sendDraft(SlackMessageDraft $objDraft)
+    {
+        $client = new Client;
+
+        // Setup message payload
+        $payload = new \StdClass;
+
+        $channel = $objDraft->getChannel();
+        if ('' !== $objDraft->getChannel()) {
+            $payload->channel = $objDraft->getChannel();
+        }
+
+        $username = $objDraft->getUsername();
+        if ('' !== $username) {
+            $payload->username = $username;
+        }
+
+        $payload->text = $objDraft->getText();
+
+        // Send message
+        $response = $client->post($this->objModel->slack_webhook, [
+            'json' => $payload
+        ]);
+
+        return (200 === $response->getStatusCode());
     }
 
     /**
@@ -65,5 +101,4 @@ class Slack extends Base implements GatewayInterface, MessageDraftFactoryInterfa
 
         return new SlackMessageDraft($objMessage, $objLanguage, $arrTokens);
     }
-
 }
