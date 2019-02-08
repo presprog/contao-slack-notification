@@ -1,12 +1,16 @@
 <?php
 
+/**
+ * @copyright: Copyright (c) 2019, Present Progressive GbR
+ * @author: Benedict Zinke <bz@presentprogressive.de>
+ */
+
 namespace PresProg\SlackNotification\Gateway;
 
 use GuzzleHttp\Client;
 use NotificationCenter\Gateway\Base;
 use NotificationCenter\Gateway\GatewayInterface;
 use NotificationCenter\MessageDraft\MessageDraftFactoryInterface;
-use NotificationCenter\MessageDraft\MessageDraftInterface;
 use NotificationCenter\Model\Language;
 use NotificationCenter\Model\Message;
 use PresProg\SlackNotification\MessageDraft\SlackMessageDraft;
@@ -25,7 +29,8 @@ class Slack extends Base implements GatewayInterface, MessageDraftFactoryInterfa
         Message $objMessage,
         array $arrTokens,
         $strLanguage = ''
-    ) {
+    )
+    {
         /**
          * @var $objDraft SlackMessageDraft
          */
@@ -85,7 +90,8 @@ class Slack extends Base implements GatewayInterface, MessageDraftFactoryInterfa
         Message $objMessage,
         array $arrTokens,
         $strLanguage = ''
-    ) {
+    )
+    {
         if ($strLanguage == '') {
             $strLanguage = $GLOBALS['TL_LANGUAGE'];
         }

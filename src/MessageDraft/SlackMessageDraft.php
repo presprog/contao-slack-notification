@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @copyright: Copyright (c) 2019, Present Progressive GbR
+ * @author: Benedict Zinke <bz@presentprogressive.de>
+ */
+
 namespace PresProg\SlackNotification\MessageDraft;
 
 use NotificationCenter\MessageDraft\MessageDraftInterface;
@@ -7,6 +12,10 @@ use NotificationCenter\Model\Language;
 use NotificationCenter\Model\Message;
 use NotificationCenter\Util\StringUtil;
 
+/**
+ * Class SlackMessageDraft
+ * @package PresProg\SlackNotification\MessageDraft
+ */
 class SlackMessageDraft implements MessageDraftInterface
 {
     /**
@@ -31,7 +40,7 @@ class SlackMessageDraft implements MessageDraftInterface
      * Construct the object
      * @param Message $objMessage
      * @param Language $objLanguage
-     * @param          $arrTokens
+     * @param Tokens $arrTokens
      */
     public function __construct(
         Message $objMessage,
