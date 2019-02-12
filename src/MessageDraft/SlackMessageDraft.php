@@ -106,7 +106,7 @@ class SlackMessageDraft implements MessageDraftInterface
      */
     public function getText()
     {
-        $strText = html_entity_decode($this->objLanguage->slack_text);
+        $strText = $this->objLanguage->slack_text;
         $strText = StringUtil::recursiveReplaceTokensAndTags($strText, $this->arrTokens, StringUtil::NO_TAGS);
 
         return $strText;
