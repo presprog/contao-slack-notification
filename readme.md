@@ -1,4 +1,4 @@
-# Send notifications to your Slack Channel via Contao Notification center
+# Send notifications to your Slack channel via Contao Notification Center
 
 This extension adds a Slack gateway to your [Contao](https://www.github.com/contao) installation with [Contao Notification Center](https://github.com/terminal42/contao-notification_center) by [terminal42](https://github.com/terminal42).
 
